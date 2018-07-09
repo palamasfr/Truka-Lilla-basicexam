@@ -69,4 +69,44 @@ function displayOfArrayElements(userDatas) {
   console.log(result);
 };
 
+function onePersonOnBoat(userDatas) {
+
+  var result = [];
+  for (var i = 0; i < userDatas.length; i++) {
+    if (typeof userDatas.crew[i] === 1) {
+      result.push(userDatas[i]);
+    }
+  }
+  console.log(result);
+};
+
+function carGoMax(userDatas) {
+
+  var result = userDatas[0];
+  for (var i = 0; i < userDatas.length; i++) {
+    if (userDatas[i].cargo_capacity > result.cargo_capacity) {
+      result = userDatas[i];
+    }
+  }
+  console.log(result);
+};
+
+function allPassengers(userDatas) {
+  var result = 0;
+  for (var i = 0; i < userDatas.length; i++) {
+    result += userDatas[i].passengers;
+  }
+  console.log(result);
+};
+
+function maxLengthPicName(userDatas) {
+  var result = userDatas[0];
+  for (var i = 0; i < userDatas.length; i++) {
+    if (userDatas[i].lengthiness > result.lengthiness) {
+      result = userDatas[i].image;
+    }
+  }
+  console.log(result);
+};
+
 
