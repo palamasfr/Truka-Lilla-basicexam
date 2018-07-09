@@ -110,3 +110,18 @@ function maxLengthPicName(userDatas) {
 };
 
 
+function searchByName(inputName, userDatas) {
+  var inputName = [];
+  for (var i = 0; i < userDatas.length; i++) {
+    for (var j = i + 1; j < userDatas.length; j++) {
+      var compNames = userDatas[i].model.localeCompare(userDatas[j].model);
+      if (compNames > 0) {
+        [userDatas[i], userDatas[j]] = [userDatas[j], userDatas[i]];
+      }
+    }
+    if (inputName.toLowercase() == userDatas[i].toLowercase().indexOf().model) {
+      inputName = userDatas[i];
+    }
+  }
+  console.log(inputName);
+};
