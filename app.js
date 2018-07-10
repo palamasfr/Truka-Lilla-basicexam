@@ -1,6 +1,6 @@
 // ide deklaráljátok a függvényeket.
 
-function orderByCost(successAjax) {
+function orderByCost(userDatas) {
 
   var i = userDatas.length - 1;
   var csere;
@@ -14,27 +14,27 @@ function orderByCost(successAjax) {
     }
     i = csere;
   }
-  return successAjax;
+  return userDatas;
 };
 
-function deleteNull(successAjax) {
+function deleteNull(userDatas) {
   var array2 = [];
   for (var i = 0; i < userDatas.length; i++) {
     if (typeof userDatas.consumables[i] !== 'null') {
       array2.push(userDatas[i]);
     }
   }
-  return successAjax;
+  return userDatas;
 };
 
-function NullToUnknown(successAjax) {
+function NullToUnknown(userDatas) {
   for (var i = 0; i < userDatas.length; i++) {
     for (var k in userDatas[i]) {
       if (typeof userDatas[i][k] == 'null') {
         userDatas[i][k] = "unkown";
       }
     }
-    return successAjax;
+    return userDatas;
   }
 };
 
@@ -46,7 +46,7 @@ function displayOfArrayElements(userDatas) {
     }
     result += "\n";
   }
-  console.log(result);
+  return result;
 };
 
 function onePersonOnBoat(userDatas) {
@@ -57,7 +57,7 @@ function onePersonOnBoat(userDatas) {
       result.push(userDatas[i]);
     }
   }
-  console.log(result);
+  return result;
 };
 
 function carGoMax(userDatas) {
@@ -68,7 +68,7 @@ function carGoMax(userDatas) {
       result = userDatas[i];
     }
   }
-  console.log(result);
+  return result;
 };
 
 function allPassengers(userDatas) {
@@ -86,7 +86,7 @@ function maxLengthPicName(userDatas) {
       result = userDatas[i].image;
     }
   }
-  console.log(result);
+  return result;
 };
 
 
@@ -103,7 +103,7 @@ function searchByName(inputName, userDatas) {
       inputName = userDatas[i];
     }
   }
-  console.log(inputName);
+  return inputName;
 };
 
 
@@ -123,6 +123,16 @@ function successAjax(xhttp) {
   var userDatas = JSON.parse(xhttp.responseText);
   // Innen lehet hívni.
   console.log(userDatas);
+  orederByCost(userDatas);
+  deleteNull(userDatas);
+  NullToUnknown(userDatas);
+  console.log(displayOfArrayElements);
+  console.log(onePersonOnBoat);
+  console.log(carGoMax);
+  console.log(allPassengers);
+  console.log(maxLengthPicName);
+  console.log(searchByName);
+
 }
 getData('/json/spaceships.json', successAjax);
 
