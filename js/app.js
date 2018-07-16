@@ -29,8 +29,8 @@ function deleteNull(arr) {
 
 function NullToUnknown(arr) {
   for (var i = 0; i < arr.length; i++) {
-    for (var k in arrDatas[i]) {
-      if (typeof arrDatas[i][k] == 'null') {
+    for (var k in arr[i]) {
+      if (typeof arr[i][k] == 'null') {
         arr[i][k] = "unkown";
       }
     }
