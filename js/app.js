@@ -38,7 +38,7 @@ function NullToUnknown(arr) {
   }
 };
 
-function SpaceshipList(arr) {
+function SpaceshipList(spaceship) {
   var spaceship = document.querySelector(".spaceship-list")
   var keys = Object.keys(userDatas)
   var url = '/img' + ship.image;
@@ -47,6 +47,7 @@ function SpaceshipList(arr) {
   for (var i = 0; i < userDatas.length; i++) {
     spaceship.innerHTML += keys + "\n" + userDatas[i] + "\n" + url;
   }
+  return spaceship;
 };
 
 
