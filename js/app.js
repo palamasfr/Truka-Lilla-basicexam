@@ -38,24 +38,14 @@ function NullToUnknown(arr) {
   }
 }
 
-function spaceShipList(spaceship) {
+function spaceShipList(arr) {
   var spaceship = document.querySelector(".spaceship-list")
-  var keys = Object.keys(userDatas)
-  var url = '/img' + Userdatas[i].image;
-  var spaceImage = document.createElement('img');
-  spaceImage.src = url
-  for (var i = 0; i < userDatas.length; i++) {
-    spaceship.innerHTML += keys + "\n" + userDatas[i] + "\n" + url;
-  }
-  return spaceship;
-}
-
-function OnClick(oneSpaceship) {
-  var oneSpaceShip = document.querySelector(".one-spaceship");
-  var spaceship = document.querySelector(".spaceship-list");
-  spaceShip.onclick = function () {
+  for (var k in arr) {
+    arr.append(spaceship);
+    spaceship.innerHTML = '<div class="spaceship-list">' + k + arr[k].value + '</div>';
 
   }
+  return arr;
 }
 
 
