@@ -7,8 +7,8 @@ function orderByCost(arr) {
   while (i > 0) {
     csere = 0;
     for (var j = 0; j < i; j++) {
-      if (arr.cost_in_credits[j] > arr.cost_in_credits[j + 1]) {
-        [arr.cost_in_credits[j], arr.cost_in_credits[j + 1]] = [arr.cost_in_credits[j + 1], arr.cost_in_credits[j]];
+      if (arr[j].cost_in_credits > arr[j + 1].cost_in_credits) {
+        [arr[j].cost_in_credits, arr[j + 1].cost_in_credits] = [arr[j + 1].cost_in_credits, arr[j].cost_in_credits];
         csere = j;
       }
     }
@@ -20,7 +20,7 @@ function orderByCost(arr) {
 function deleteNull(arr) {
   var arr = [];
   for (var i = 0; i < arr.length; i++) {
-    if (typeof arr.consumables[i] !== 'null') {
+    if (typeof arr[i].consumables !== 'null') {
       arr.push(arr[i]);
     }
   }
@@ -38,16 +38,24 @@ function NullToUnknown(arr) {
   }
 }
 
-function SpaceshipList(spaceship) {
+function spaceShipList(spaceship) {
   var spaceship = document.querySelector(".spaceship-list")
   var keys = Object.keys(userDatas)
-  var url = '/img' + ship.image;
+  var url = '/img' + Userdatas[i].image;
   var spaceImage = document.createElement('img');
   spaceImage.src = url
   for (var i = 0; i < userDatas.length; i++) {
     spaceship.innerHTML += keys + "\n" + userDatas[i] + "\n" + url;
   }
   return spaceship;
+}
+
+function OnClick(oneSpaceship) {
+  var oneSpaceShip = document.querySelector(".one-spaceship");
+  var spaceship = document.querySelector(".spaceship-list");
+  spaceShip.onclick = function () {
+
+  }
 }
 
 
@@ -66,7 +74,7 @@ function onePersonOnBoat(arr) {
 
   var result = [];
   for (var i = 0; i < arr.length; i++) {
-    if (typeof arr.crew[i] === 1) {
+    if (typeof arr[i].crew === 1) {
       result.push(arr[i]);
     }
   }
@@ -103,20 +111,23 @@ function maxLengthPicName(arr) {
 }
 
 
-function searchByName(name, userDatas) {
-  var name = [];
-  for (var i = 0; i < userDatas.length; i++) {
-    for (var j = i + 1; j < userDatas.length; j++) {
-      var compNames = userDatas[i].model.localeCompare(userDatas[j].model);
+function searchByName(arr) {
+  var result = [];
+  var arr = [];
+  var search = document.querySelector('#search-text').textContent;
+  for (var i = 0; i < arr.length - 1; i++) {
+    for (var j = i + 1; j < arr.length; j++) {
+      var compNames = arr[i].model.localeCompare(arr[j].model);
       if (compNames > 0) {
-        [userDatas[i], userDatas[j]] = [userDatas[j], userDatas[i]];
+        [arr[i], arr[j]] = [arr[j], arr[i]];
       }
     }
-    if (name.toLowercase() == userDatas[i].toLowercase().indexOf().model) {
-      name = userDatas[i];
+    if (search.toLowercase() == arr[i].toLowercase().indexOf().model) {
+      result = arr[i];
     }
   }
-  return name;
+  console.log(result);
+
 }
 
 
@@ -135,7 +146,7 @@ function successAjax(xhttp) {
   // Innen lesz elérhető a JSON file tartalma, tehát az adatok amikkel dolgoznod kell
   var userDatas = JSON.parse(xhttp.responseText);
   // Innen lehet hívni.
-  orederByCost(userDatas);
+  orderByCost(userDatas);
   deleteNull(userDatas);
   NullToUnknown(userDatas);
   console.log(userDatas);
