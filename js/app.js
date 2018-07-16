@@ -38,6 +38,18 @@ function NullToUnknown(userDatas) {
   }
 };
 
+function SpaceshipList(userDatas) {
+  var spaceship = document.querySelector(".spaceship-list")
+  var keys = Object.keys(userDatas)
+  var url = '/img' + ship.image;
+  var spaceImage = document.createElement('img');
+  spaceImage.src = url
+  for (var i = 0; i < userDatas.length; i++) {
+    spaceship.innerHTML += keys + "\n" + userDatas[i] + "\n" + url;
+  }
+};
+
+
 function displayOfArrayElements(userDatas) {
   var result = "";
   for (var i = 0; i < userDatas.length; i++) {
