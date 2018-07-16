@@ -15,7 +15,7 @@ function orderByCost(arr) {
     i = csere;
   }
   return arr;
-};
+}
 
 function deleteNull(arr) {
   var arr = [];
@@ -25,7 +25,7 @@ function deleteNull(arr) {
     }
   }
   return arr;
-};
+}
 
 function NullToUnknown(arr) {
   for (var i = 0; i < arr.length; i++) {
@@ -36,7 +36,7 @@ function NullToUnknown(arr) {
     }
     return arr;
   }
-};
+}
 
 function SpaceshipList(spaceship) {
   var spaceship = document.querySelector(".spaceship-list")
@@ -48,7 +48,7 @@ function SpaceshipList(spaceship) {
     spaceship.innerHTML += keys + "\n" + userDatas[i] + "\n" + url;
   }
   return spaceship;
-};
+}
 
 
 function displayOfArrayElements(arr) {
@@ -60,7 +60,7 @@ function displayOfArrayElements(arr) {
     result += "\n";
   }
   return result;
-};
+}
 
 function onePersonOnBoat(arr) {
 
@@ -71,7 +71,7 @@ function onePersonOnBoat(arr) {
     }
   }
   return result;
-};
+}
 
 function carGoMax(arr) {
 
@@ -82,7 +82,7 @@ function carGoMax(arr) {
     }
   }
   return result;
-};
+}
 
 function allPassengers(arr) {
   var result = 0;
@@ -90,7 +90,7 @@ function allPassengers(arr) {
     result += parseInt(arr[i].passengers);
   }
   return result;
-};
+}
 
 function maxLengthPicName(arr) {
   var result = arr[0];
@@ -100,7 +100,7 @@ function maxLengthPicName(arr) {
     }
   }
   return result;
-};
+}
 
 
 function searchByName(name, userDatas) {
@@ -117,7 +117,7 @@ function searchByName(name, userDatas) {
     }
   }
   return name;
-};
+}
 
 
 function getData(url, callbackFunc) {
