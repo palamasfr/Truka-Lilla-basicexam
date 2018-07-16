@@ -1,44 +1,44 @@
 // ide deklaráljátok a függvényeket.
 
-function orderByCost(userDatas) {
+function orderByCost(arr) {
 
-  var i = userDatas.length - 1;
+  var i = arr.length - 1;
   var csere;
   while (i > 0) {
     csere = 0;
     for (var j = 0; j < i; j++) {
-      if (userDatas.cost_in_credits[j] > userDatas.cost_in_credits[j + 1]) {
-        [userDatas.cost_in_credits[j], userDatas.cost_in_credits[j + 1]] = [userDatas.cost_in_credits[j + 1], userDatas.cost_in_credits[j]];
+      if (arr.cost_in_credits[j] > arr.cost_in_credits[j + 1]) {
+        [arr.cost_in_credits[j], arr.cost_in_credits[j + 1]] = [arr.cost_in_credits[j + 1], arr.cost_in_credits[j]];
         csere = j;
       }
     }
     i = csere;
   }
-  return userDatas;
+  return arr;
 };
 
-function deleteNull(userDatas) {
-  var array2 = [];
-  for (var i = 0; i < userDatas.length; i++) {
-    if (typeof userDatas.consumables[i] !== 'null') {
-      array2.push(userDatas[i]);
+function deleteNull(arr) {
+  var arr = [];
+  for (var i = 0; i < arr.length; i++) {
+    if (typeof arr.consumables[i] !== 'null') {
+      arr.push(arr[i]);
     }
   }
-  return userDatas;
+  return arr;
 };
 
-function NullToUnknown(userDatas) {
-  for (var i = 0; i < userDatas.length; i++) {
-    for (var k in userDatas[i]) {
-      if (typeof userDatas[i][k] == 'null') {
-        userDatas[i][k] = "unkown";
+function NullToUnknown(arr) {
+  for (var i = 0; i < arr.length; i++) {
+    for (var k in arrDatas[i]) {
+      if (typeof arrDatas[i][k] == 'null') {
+        arr[i][k] = "unkown";
       }
     }
-    return userDatas;
+    return arr;
   }
 };
 
-function SpaceshipList(userDatas) {
+function SpaceshipList(arr) {
   var spaceship = document.querySelector(".spaceship-list")
   var keys = Object.keys(userDatas)
   var url = '/img' + ship.image;
@@ -50,60 +50,60 @@ function SpaceshipList(userDatas) {
 };
 
 
-function displayOfArrayElements(userDatas) {
+function displayOfArrayElements(arr) {
   var result = "";
-  for (var i = 0; i < userDatas.length; i++) {
-    for (var k in userDatas[i]) {
-      result += k + " : " + userDatas[i][k] + " , " + "\n";//kiírja az összes key-t + hozzá a value-kat a tömbből
+  for (var i = 0; i < arr.length; i++) {
+    for (var k in arr[i]) {
+      result += k + " : " + arr[i][k] + " , " + "\n";//kiírja az összes key-t + hozzá a value-kat a tömbből
     }
     result += "\n";
   }
   return result;
 };
 
-function onePersonOnBoat(userDatas) {
+function onePersonOnBoat(arr) {
 
   var result = [];
-  for (var i = 0; i < userDatas.length; i++) {
-    if (typeof userDatas.crew[i] === 1) {
-      result.push(userDatas[i]);
+  for (var i = 0; i < arr.length; i++) {
+    if (typeof arr.crew[i] === 1) {
+      result.push(arr[i]);
     }
   }
   return result;
 };
 
-function carGoMax(userDatas) {
+function carGoMax(arr) {
 
-  var result = userDatas[0];
-  for (var i = 0; i < userDatas.length; i++) {
-    if (userDatas[i].cargo_capacity > result.cargo_capacity) {
-      result = userDatas[i];
+  var result = arr[0];
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i].cargo_capacity > result.cargo_capacity) {
+      result = arr[i];
     }
   }
   return result;
 };
 
-function allPassengers(userDatas) {
+function allPassengers(arr) {
   var result = 0;
-  for (var i = 0; i < userDatas.length; i++) {
-    result += userDatas[i].passengers;
+  for (var i = 0; i < arr.length; i++) {
+    result += parseInt(arr[i].passengers);
   }
-  console.log(result);
+  return result;
 };
 
-function maxLengthPicName(userDatas) {
-  var result = userDatas[0];
-  for (var i = 0; i < userDatas.length; i++) {
-    if (userDatas[i].lengthiness > result.lengthiness) {
-      result = userDatas[i].image;
+function maxLengthPicName(arr) {
+  var result = arr[0];
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i].lengthiness > result.lengthiness) {
+      result = arr[i].image;
     }
   }
   return result;
 };
 
 
-function searchByName(inputName, userDatas) {
-  var inputName = [];
+function searchByName(name, userDatas) {
+  var name = [];
   for (var i = 0; i < userDatas.length; i++) {
     for (var j = i + 1; j < userDatas.length; j++) {
       var compNames = userDatas[i].model.localeCompare(userDatas[j].model);
@@ -111,11 +111,11 @@ function searchByName(inputName, userDatas) {
         [userDatas[i], userDatas[j]] = [userDatas[j], userDatas[i]];
       }
     }
-    if (inputName.toLowercase() == userDatas[i].toLowercase().indexOf().model) {
-      inputName = userDatas[i];
+    if (name.toLowercase() == userDatas[i].toLowercase().indexOf().model) {
+      name = userDatas[i];
     }
   }
-  return inputName;
+  return name;
 };
 
 
@@ -134,16 +134,16 @@ function successAjax(xhttp) {
   // Innen lesz elérhető a JSON file tartalma, tehát az adatok amikkel dolgoznod kell
   var userDatas = JSON.parse(xhttp.responseText);
   // Innen lehet hívni.
-  console.log(userDatas);
   orederByCost(userDatas);
   deleteNull(userDatas);
   NullToUnknown(userDatas);
-  console.log(displayOfArrayElements);
-  console.log(onePersonOnBoat);
-  console.log(carGoMax);
-  console.log(allPassengers);
-  console.log(maxLengthPicName);
-  console.log(searchByName);
+  console.log(userDatas);
+  displayOfArrayElements(userDatas);
+  onePersonOnBoat(userDatas);
+  carGoMax(userDatas);
+  allPassengers(userDatas);
+  maxLengthPicName(userDatas);
+  searchByName(userDatas);
 
 }
 getData('/json/spaceships.json', successAjax);
